@@ -23,15 +23,16 @@ window.WEDDING = {
   // Each painting fills the screen; scrolling zooms into the figure and blurs the rest,
   // then the name appears. focus x/y = where the figure is (0 to 1 across/down the picture),
   // size = how tall the figure is as a share of the picture's height.
-  groomImage: "images/groom.jpg",
-  groomImageAlt: "Rama lifting Shiva's bow at Sita's swayamvara",
-  groomFocus: { x: 0.38, y: 0.385, size: 0.32 },
-  groomCaption: "At Sita's swayamvara in Mithila, prince after prince failed to lift Shiva's mighty bow. Rama raised it with ease, and as he strung it, the bow broke with a sound like thunder.",
-
+  // Sita's story comes first, then Rama's.
   brideImage: "images/bride.jpg",            // leave "" to hide the bride's story
-  brideImageAlt: "Young Sita with Shiva's bow in a flowering garden",
-  brideFocus: { x: 0.52, y: 0.40, size: 0.62 },
+  brideImageAlt: "Pichwai painting: young Sita with Shiva's golden bow among lotuses, cows and peacocks",
+  brideFocus: { x: 0.5, y: 0.40, size: 0.56 },
   brideCaption: "As a young girl, Sita moved Shiva's bow while playing, a bow no one else could even shift. Her father vowed she would marry only the one who could string it.",
+
+  groomImage: "images/groom.jpg",
+  groomImageAlt: "Pichwai painting: Rama breaks Shiva's bow as Sita and King Janaka look on",
+  groomFocus: { x: 0.52, y: 0.42, size: 0.58 },
+  groomCaption: "At Sita's swayamvara in Mithila, prince after prince failed to lift Shiva's mighty bow. Rama raised it with ease, and as he strung it, the bow broke with a sound like thunder.",
 
   // ---- Events (add, remove or reorder as you like) ----
   events: [

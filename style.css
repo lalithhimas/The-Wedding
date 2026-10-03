@@ -116,13 +116,23 @@ a { color: inherit; }
 .small { font-size: 1rem; color: var(--ink-soft); margin-bottom: 1.2rem; }
 
 /* ---------- Painting stories (scroll-driven zoom) ---------- */
-.story { position: relative; height: 340vh; background: #120c07; }
+.story { position: relative; height: 340vh; background: var(--ground); }
 .story-stage {
   position: sticky; top: 0;
   height: 100vh; height: 100svh;
   overflow: hidden;
-  background: #120c07;
+  background: var(--ground);
 }
+.story-vignette {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: radial-gradient(ellipse 75% 70% at 50% 50%, transparent 55%, rgba(20,30,18,.45) 100%);
+}
+.story-fade {
+  position: absolute; left: 0; right: 0; z-index: 1; pointer-events: none;
+  height: 45%;
+}
+.story-fade-top { top: 0; background: linear-gradient(var(--ground), rgba(43,74,44,.85) 25%, rgba(43,74,44,0)); }
+.story-fade-bottom { bottom: 0; opacity: 0; background: linear-gradient(rgba(43,74,44,0), rgba(43,74,44,.85) 75%, var(--ground)); }
 .story-canvas {
   position: absolute; left: 0; top: 0;
   transform-origin: 0 0;
@@ -136,11 +146,11 @@ a { color: inherit; }
   position: absolute; z-index: 2;
   top: 72vh; left: max(1rem, 6vw);
   width: min(26rem, calc(100% - 2rem));
-  padding: 1.4rem 1.6rem;
-  background: rgba(248,238,216,.94);
-  border-left: 4px solid var(--vermilion);
-  box-shadow: 0 12px 30px rgba(0,0,0,.35);
-  font-size: 1.12rem; line-height: 1.55;
+  padding: 1.4rem 1.7rem;
+  background: rgba(250,243,228,.82);
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+  box-shadow: 0 0 0 1px rgba(184,137,47,.7), 0 0 0 5px rgba(250,243,228,.5), 0 0 0 6px rgba(184,137,47,.45), 0 14px 34px rgba(10,20,10,.3);
+  font-size: 1.12rem; line-height: 1.6; font-style: italic;
 }
 .story-card {
   position: absolute; z-index: 3;
