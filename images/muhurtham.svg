@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" preserveAspectRatio="xMidYMid slice">
+<defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#766e82"/><stop offset="1" stop-color="#5a3c32"/></linearGradient>
+<filter id="b"><feGaussianBlur stdDeviation="27"/></filter></defs>
+<rect width="100%" height="100%" fill="url(#g)"/><g filter="url(#b)"><circle cx="577" cy="124" r="143" fill="#a8c896" opacity=".35"/><circle cx="171" cy="415" r="143" fill="#ffd0da" opacity=".35"/><circle cx="409" cy="329" r="62" fill="#a8c896" opacity=".35"/><circle cx="134" cy="621" r="67" fill="#a8c896" opacity=".35"/><circle cx="600" cy="225" r="63" fill="#a8c896" opacity=".35"/><circle cx="519" cy="384" r="141" fill="#a8c896" opacity=".35"/><circle cx="485" cy="768" r="98" fill="#a8c896" opacity=".35"/><circle cx="582" cy="43" r="62" fill="#a8c896" opacity=".35"/><circle cx="74" cy="511" r="141" fill="#fff0c8" opacity=".35"/><circle cx="117" cy="243" r="80" fill="#a8c896" opacity=".35"/><circle cx="31" cy="257" r="72" fill="#fff0c8" opacity=".35"/><circle cx="447" cy="651" r="126" fill="#fff0c8" opacity=".35"/></g>
+<text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" font-family="Georgia,serif" font-size="20" fill="#fff" opacity=".9">muhurtham</text>
+</svg>

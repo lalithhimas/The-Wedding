@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" preserveAspectRatio="xMidYMid slice">
+<defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#866e6e"/><stop offset="1" stop-color="#5a3c32"/></linearGradient>
+<filter id="b"><feGaussianBlur stdDeviation="27"/></filter></defs>
+<rect width="100%" height="100%" fill="url(#g)"/><g filter="url(#b)"><circle cx="512" cy="64" r="79" fill="#ffd0da" opacity=".35"/><circle cx="515" cy="760" r="75" fill="#fff0c8" opacity=".35"/><circle cx="114" cy="476" r="148" fill="#ffd0da" opacity=".35"/><circle cx="341" cy="316" r="110" fill="#a8c896" opacity=".35"/><circle cx="39" cy="71" r="97" fill="#ffd0da" opacity=".35"/><circle cx="572" cy="429" r="66" fill="#fff0c8" opacity=".35"/><circle cx="467" cy="173" r="94" fill="#ffd0da" opacity=".35"/><circle cx="42" cy="393" r="87" fill="#ffd0da" opacity=".35"/><circle cx="64" cy="576" r="108" fill="#ffd0da" opacity=".35"/><circle cx="66" cy="650" r="103" fill="#ffd0da" opacity=".35"/><circle cx="539" cy="258" r="125" fill="#fff0c8" opacity=".35"/><circle cx="290" cy="134" r="114" fill="#fff0c8" opacity=".35"/></g>
+<text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" font-family="Georgia,serif" font-size="20" fill="#fff" opacity=".9">sangeet</text>
+</svg>

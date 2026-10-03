@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1200" preserveAspectRatio="xMidYMid slice">
+<defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#aa5f6e"/><stop offset="1" stop-color="#3c3246"/></linearGradient>
+<filter id="b"><feGaussianBlur stdDeviation="40"/></filter></defs>
+<rect width="100%" height="100%" fill="url(#g)"/><g filter="url(#b)"><circle cx="617" cy="19" r="186" fill="#a8c896" opacity=".35"/><circle cx="724" cy="612" r="175" fill="#ffd0da" opacity=".35"/><circle cx="153" cy="988" r="147" fill="#a8c896" opacity=".35"/><circle cx="368" cy="847" r="102" fill="#ffd0da" opacity=".35"/><circle cx="687" cy="1145" r="99" fill="#ffd0da" opacity=".35"/><circle cx="322" cy="1085" r="113" fill="#a8c896" opacity=".35"/><circle cx="665" cy="206" r="188" fill="#fff0c8" opacity=".35"/><circle cx="192" cy="781" r="132" fill="#ffd0da" opacity=".35"/><circle cx="559" cy="396" r="110" fill="#ffd0da" opacity=".35"/><circle cx="651" cy="841" r="163" fill="#ffd0da" opacity=".35"/><circle cx="263" cy="1182" r="94" fill="#fff0c8" opacity=".35"/><circle cx="37" cy="204" r="158" fill="#fff0c8" opacity=".35"/></g>
+<text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" font-family="Georgia,serif" font-size="30" fill="#fff" opacity=".9">gallery-4</text>
+</svg>
