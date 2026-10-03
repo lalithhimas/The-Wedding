@@ -2,7 +2,7 @@
 
 A one-page wedding invitation hosted free on GitHub Pages.
 
-**Live link:** [https://lalith-sagar-devagudi.github.io/The-Wedding/](https://lalithhimas.github.io/The-Wedding/)
+**Live link:** [https://lalithhimas.github.io/The-Wedding/](https://lalithhimas.github.io/The-Wedding/)
 
 ## Customise
 
