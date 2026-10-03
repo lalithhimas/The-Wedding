@@ -64,7 +64,7 @@ window.WEDDING = {
   rsvp: {
     // Country code + number, digits only (e.g. 91 for India)
     whatsapp: "919876543210",
-    message: "Hi! We'd love to attend the wedding of Vignesh & Nithya. Count us in!"
+    message: "Hi! We'd love to attend the wedding of Lalith & Himabindu. Count us in!"
   },
 
   // ---- Things to know ----
@@ -77,7 +77,7 @@ window.WEDDING = {
 
   // ---- Instagram ----
   instagram: {
-    hashtag: "#VigNithyaForever",
+    hashtag: "#Himalithed",
     url: "https://instagram.com/"
   },
 
