@@ -15,18 +15,101 @@
   text("groomParents", W.groomParents); text("brideParents", W.brideParents);
   text("closeGroom", W.groom); text("closeBride", W.bride);
 
-  /* ---------- Groom / bride ---------- */
-  function person(key, name, parents) {
+  /* ---------- Painting stories: pinned painting, zoom into the figure, blur the rest ---------- */
+  const storiesWrap = $("stories");
+  const stories = [];
+  const clamp01 = (v) => Math.min(1, Math.max(0, v));
+  const ease = (t) => t < .5 ? 4*t*t*t : 1 - Math.pow(-2*t + 2, 3) / 2;
+
+  function buildStory(key, name, parents) {
     const src = W[key + "Image"];
-    if (!src) { $(key).hidden = true; return; }
-    $(key).hidden = false;
-    const img = $(key + "Img");
-    img.src = src; img.alt = W[key + "ImageAlt"] || name;
-    text(key + "Name", name);
-    text(key + "ParentsLine", parents);
+    if (!src) return;
+    const focus = Object.assign({ x: .5, y: .5, size: .5 }, W[key + "Focus"] || {});
+    const sec = document.createElement("section");
+    sec.className = "story"; sec.id = key;
+    sec.setAttribute("aria-label", name);
+    // Mask that keeps the figure sharp: an ellipse around the focus point, in picture coordinates
+    sec.innerHTML = `
+      <div class="story-stage">
+        <div class="story-ambient"></div>
+        <div class="story-canvas">
+          <img class="story-sharp" alt="">
+          <img class="story-blur" alt="" aria-hidden="true">
+          <img class="story-focus" alt="" aria-hidden="true">
+        </div>
+        <div class="panel story-card">
+          <p class="person-name"></p>
+          <p class="lead"></p>
+        </div>
+      </div>
+      ${W[key + "Caption"] ? '<p class="story-caption"></p>' : ""}`;
+    const imgs = sec.querySelectorAll(".story-canvas img");
+    imgs.forEach((im) => (im.src = src));
+    imgs[0].alt = W[key + "ImageAlt"] || name;
+    sec.querySelector(".story-ambient").style.backgroundImage = `url("${src}")`;
+    sec.querySelector(".person-name").textContent = name;
+    sec.querySelector(".story-card .lead").textContent = parents || "";
+    const cap = sec.querySelector(".story-caption");
+    if (cap) cap.textContent = W[key + "Caption"];
+    storiesWrap.appendChild(sec);
+
+    const st = {
+      sec, focus,
+      stage: sec.querySelector(".story-stage"),
+      canvas: sec.querySelector(".story-canvas"),
+      blur: sec.querySelector(".story-blur"),
+      sharpFocus: sec.querySelector(".story-focus"),
+      card: sec.querySelector(".story-card"),
+      iw: 0, ih: 0
+    };
+    imgs[0].addEventListener("load", () => {
+      st.iw = imgs[0].naturalWidth; st.ih = imgs[0].naturalHeight;
+      st.canvas.style.width = st.iw + "px"; st.canvas.style.height = st.ih + "px";
+      const ry = focus.size * 62;                      // % of picture height
+      const rx = ry * 0.8 * st.ih / st.iw;             // % of picture width
+      const m = `radial-gradient(ellipse ${rx}% ${ry}% at ${focus.x*100}% ${focus.y*100}%, #000 55%, rgba(0,0,0,.5) 78%, transparent 100%)`;
+      st.sharpFocus.style.webkitMaskImage = m; st.sharpFocus.style.maskImage = m;
+      render(st);
+    });
+    if (imgs[0].complete && imgs[0].naturalWidth) imgs[0].dispatchEvent(new Event("load"));
+    stories.push(st);
   }
-  person("groom", W.groom, W.groomParents);
-  person("bride", W.bride, W.brideParents);
+
+  function render(st) {
+    if (!st.iw) return;
+    const vw = st.stage.clientWidth, vh = st.stage.clientHeight;
+    const r = st.sec.getBoundingClientRect();
+    const p = reduceMotion ? 1 : clamp01(-r.top / (r.height - vh));
+    const z = reduceMotion ? 1 : ease(clamp01((p - .2) / .42));   // zoom progress
+    const c = reduceMotion ? 1 : clamp01((p - .56) / .14);        // name card
+    const mobile = vw < 760;
+    const { x: fx, y: fy, size } = st.focus;
+
+    // Start: whole painting fitted on screen. End: figure fills most of the height.
+    const s0 = Math.min(vw * .92 / st.iw, vh * .86 / st.ih);
+    const s1 = Math.max(s0 * 1.2, (vh * (mobile ? .58 : .82)) / (size * st.ih));
+    const s = s0 * Math.pow(s1 / s0, z);
+    const f0x = (vw - st.iw * s0) / 2 + fx * st.iw * s0;
+    const f0y = (vh - st.ih * s0) / 2 + fy * st.ih * s0;
+    const f1x = mobile ? vw * .5 : vw * .33;
+    const f1y = mobile ? vh * .36 : vh * .5;
+    const tx = f0x + (f1x - f0x) * z - fx * st.iw * s;
+    const ty = f0y + (f1y - f0y) * z - fy * st.ih * s;
+    st.canvas.style.transform = `translate(${tx}px, ${ty}px) scale(${s})`;
+    st.blur.style.opacity = z;
+    st.canvas.style.boxShadow = `0 20px 60px rgba(0,0,0,${(.5 * (1 - z)).toFixed(3)})`;
+    st.sharpFocus.style.opacity = z;
+    st.card.style.opacity = c;
+    const lift = (1 - c) * 30;
+    st.card.style.transform = mobile ? `translateY(${lift}px)` : `translateY(calc(-50% + ${lift}px))`;
+  }
+
+  buildStory("groom", W.groom, W.groomParents);
+  buildStory("bride", W.bride, W.brideParents);
+  let storyTick = false;
+  const renderAll = () => { stories.forEach(render); storyTick = false; };
+  addEventListener("scroll", () => { if (!storyTick) { storyTick = true; requestAnimationFrame(renderAll); } }, { passive: true });
+  addEventListener("resize", renderAll);
 
   /* ---------- Events ---------- */
   const flourish = (cls) =>

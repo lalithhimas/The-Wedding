@@ -6,8 +6,8 @@
 
 window.WEDDING = {
   // ---- The couple ----
-  groom: "Lalith Sagar",
-  bride: "Himabindu",
+  groom: "Vignesh",
+  bride: "Nithya",
 
   // Used for the countdown. Format: YYYY-MM-DDTHH:MM:SS+timezone (India = +05:30)
   weddingDate: "2027-03-12T09:00:00+05:30",
@@ -19,21 +19,28 @@ window.WEDDING = {
   groomParents: "Son of Smt. Kamakshi & Shri Srinivasan Iyer",
   brideParents: "Daughter of Smt. Parvathi & Shri K. Ramaswamy",
 
-  // ---- Groom section: picture on the left, name on the right ----
+  // ---- Painting stories ----
+  // Each painting fills the screen; scrolling zooms into the figure and blurs the rest,
+  // then the name appears. focus x/y = where the figure is (0 to 1 across/down the picture),
+  // size = how tall the figure is as a share of the picture's height.
   groomImage: "images/groom.jpg",
   groomImageAlt: "Rama lifting Shiva's bow at Sita's swayamvara",
-  // Bride section: picture blended in on the left, name on the right. Leave "" to hide it.
-  brideImage: "images/bride.jpg",
+  groomFocus: { x: 0.38, y: 0.385, size: 0.32 },
+  groomCaption: "At Sita's swayamvara in Mithila, prince after prince failed to lift Shiva's mighty bow. Rama raised it with ease, and as he strung it, the bow broke with a sound like thunder.",
+
+  brideImage: "images/bride.jpg",            // leave "" to hide the bride's story
   brideImageAlt: "Young Sita with Shiva's bow in a flowering garden",
+  brideFocus: { x: 0.52, y: 0.40, size: 0.62 },
+  brideCaption: "As a young girl, Sita moved Shiva's bow while playing, a bow no one else could even shift. Her father vowed she would marry only the one who could string it.",
 
   // ---- Events (add, remove or reorder as you like) ----
   events: [
-    { name: "Mehendi", date: "Wednesday, 10 March 2027", time: "4 pm onwards", venue: "Kalki Gardens, Chennai", image: "images/mehendi.svg" },
-    { name: "Haldi", date: "Thursday, 11 March 2027", time: "9 am onwards", venue: "Kalki Gardens, Chennai", image: "images/haldi.svg" },
-    { name: "Sangeet", date: "Thursday, 11 March 2027", time: "7 pm onwards", venue: "Kalki Gardens, Chennai", image: "images/sangeet.svg" },
-    { name: "Engagement", date: "Thursday, 11 March 2027", time: "11 am", venue: "Sri Mahal, Chennai", image: "images/engagement.svg" },
-    { name: "Muhurtham", date: "Friday, 12 March 2027", time: "9 am – 10.30 am", venue: "Sri Mahal, Chennai", image: "images/muhurtham.svg" },
-    { name: "Reception", date: "Friday, 12 March 2027", time: "7 pm onwards", venue: "The Leela Palace, Chennai", image: "images/reception.svg" }
+    { name: "Mehendi",    date: "Wednesday, 10 March 2027", time: "4 pm onwards",  venue: "Kalki Gardens, Chennai",       image: "images/mehendi.svg" },
+    { name: "Haldi",      date: "Thursday, 11 March 2027",  time: "9 am onwards",  venue: "Kalki Gardens, Chennai",       image: "images/haldi.svg" },
+    { name: "Sangeet",    date: "Thursday, 11 March 2027",  time: "7 pm onwards",  venue: "Kalki Gardens, Chennai",       image: "images/sangeet.svg" },
+    { name: "Engagement", date: "Thursday, 11 March 2027",  time: "11 am",         venue: "Sri Mahal, Chennai",           image: "images/engagement.svg" },
+    { name: "Muhurtham",  date: "Friday, 12 March 2027",    time: "9 am – 10.30 am", venue: "Sri Mahal, Chennai",         image: "images/muhurtham.svg" },
+    { name: "Reception",  date: "Friday, 12 March 2027",    time: "7 pm onwards",  venue: "The Leela Palace, Chennai",    image: "images/reception.svg" }
     // Optional per event: mapLink: "https://maps.app.goo.gl/..."
   ],
 
