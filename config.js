@@ -14,10 +14,10 @@ window.WEDDING = {
   weddingDateText: "Friday, 12 March 2027",
 
   // ---- The invitation text ----
-  hostLine: "Smt. Kamakshi & Shri Srinivasan Iyer",
+  hostLine: "Smt. Rupa Sree Devagudi & Shri Vidya Sagar Devagudi",
   inviteLine: "request the pleasure of your company at the wedding celebrations of",
-  groomParents: "Son of Smt. Kamakshi & Shri Srinivasan Iyer",
-  brideParents: "Daughter of Smt. Parvathi & Shri K. Ramaswamy",
+  groomParents: "Son of Rupa Sree Devagudi & Shri Vidya Sagar Devagudi",
+  brideParents: "Daughter of Smt. Vasantha Kadiri & Shri Sreenivasulu Kadiri",
 
   // ---- Painting stories ----
   // Each painting fills the screen; scrolling zooms into the figure and blurs the rest,
