@@ -31,7 +31,6 @@
     // Mask that keeps the figure sharp: an ellipse around the focus point, in picture coordinates
     sec.innerHTML = `
       <div class="story-stage">
-        <div class="story-ambient"></div>
         <div class="story-canvas">
           <img class="story-sharp" alt="">
           <img class="story-blur" alt="" aria-hidden="true">
@@ -46,7 +45,6 @@
     const imgs = sec.querySelectorAll(".story-canvas img");
     imgs.forEach((im) => (im.src = src));
     imgs[0].alt = W[key + "ImageAlt"] || name;
-    sec.querySelector(".story-ambient").style.backgroundImage = `url("${src}")`;
     sec.querySelector(".person-name").textContent = name;
     sec.querySelector(".story-card .lead").textContent = parents || "";
     const cap = sec.querySelector(".story-caption");
@@ -85,19 +83,20 @@
     const mobile = vw < 760;
     const { x: fx, y: fy, size } = st.focus;
 
-    // Start: whole painting fitted on screen. End: figure fills most of the height.
-    const s0 = Math.min(vw * .92 / st.iw, vh * .86 / st.ih);
-    const s1 = Math.max(s0 * 1.2, (vh * (mobile ? .58 : .82)) / (size * st.ih));
+    // The painting always covers the whole screen; scrolling zooms in on the figure.
+    const cover = Math.max(vw / st.iw, vh / st.ih);
+    const s0 = cover;
+    const fit = (vh * .9) / (size * st.ih);                       // largest zoom where the whole figure still fits
+    const s1 = Math.max(cover * 1.05, Math.min(fit, Math.max(cover * 1.35, (vh * (mobile ? .58 : .82)) / (size * st.ih))));
     const s = s0 * Math.pow(s1 / s0, z);
-    const f0x = (vw - st.iw * s0) / 2 + fx * st.iw * s0;
-    const f0y = (vh - st.ih * s0) / 2 + fy * st.ih * s0;
-    const f1x = mobile ? vw * .5 : vw * .33;
-    const f1y = mobile ? vh * .36 : vh * .5;
-    const tx = f0x + (f1x - f0x) * z - fx * st.iw * s;
-    const ty = f0y + (f1y - f0y) * z - fy * st.ih * s;
+    // Where the figure should sit on screen: centred at first, then beside the name card
+    const sxTarget = vw * (.5 + ((mobile ? .5 : .33) - .5) * z);
+    const syTarget = vh * (.5 + ((mobile ? .36 : .5) - .5) * z);
+    const clampT = (v, min) => Math.min(0, Math.max(min, v));   // never show the painting's edges
+    const tx = clampT(sxTarget - fx * st.iw * s, vw - st.iw * s);
+    const ty = clampT(syTarget - fy * st.ih * s, vh - st.ih * s);
     st.canvas.style.transform = `translate(${tx}px, ${ty}px) scale(${s})`;
     st.blur.style.opacity = z;
-    st.canvas.style.boxShadow = `0 20px 60px rgba(0,0,0,${(.5 * (1 - z)).toFixed(3)})`;
     st.sharpFocus.style.opacity = z;
     st.card.style.opacity = c;
     const lift = (1 - c) * 30;
