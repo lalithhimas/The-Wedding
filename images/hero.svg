@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 1100" preserveAspectRatio="xMidYMid slice">
-<defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#466e78"/><stop offset="1" stop-color="#3c5f37"/></linearGradient>
-<filter id="b"><feGaussianBlur stdDeviation="81"/></filter></defs>
-<rect width="100%" height="100%" fill="url(#g)"/><g filter="url(#b)"><circle cx="283" cy="1062" r="208" fill="#ffd0da" opacity=".35"/><circle cx="277" cy="639" r="317" fill="#a8c896" opacity=".35"/><circle cx="1288" cy="583" r="316" fill="#a8c896" opacity=".35"/><circle cx="1000" cy="1094" r="338" fill="#ffd0da" opacity=".35"/><circle cx="1176" cy="135" r="257" fill="#ffd0da" opacity=".35"/><circle cx="760" cy="192" r="278" fill="#a8c896" opacity=".35"/><circle cx="824" cy="173" r="360" fill="#a8c896" opacity=".35"/><circle cx="1593" cy="229" r="357" fill="#a8c896" opacity=".35"/><circle cx="1515" cy="709" r="419" fill="#ffd0da" opacity=".35"/><circle cx="915" cy="609" r="404" fill="#a8c896" opacity=".35"/><circle cx="32" cy="737" r="395" fill="#ffd0da" opacity=".35"/><circle cx="1603" cy="884" r="245" fill="#fff0c8" opacity=".35"/></g>
-<text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" font-family="Georgia,serif" font-size="60" fill="#fff" opacity=".9">Replace with your photo: images/hero</text>
-</svg>

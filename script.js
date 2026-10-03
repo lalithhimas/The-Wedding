@@ -13,13 +13,20 @@
   text("inviteLine", W.inviteLine);
   text("nameGroom", W.groom); text("nameBride", W.bride);
   text("groomParents", W.groomParents); text("brideParents", W.brideParents);
-  text("storyCaption", W.storyCaption);
   text("closeGroom", W.groom); text("closeBride", W.bride);
 
-  if (W.heroImage) $("heroBg").style.backgroundImage = `url("${W.heroImage}")`;
-  if (W.storyImage) $("storyImg").style.backgroundImage = `url("${W.storyImage}")`;
-  else $("story").remove();
-  if (W.closingImage) $("closingImg").style.backgroundImage = `url("${W.closingImage}")`;
+  /* ---------- Groom / bride ---------- */
+  function person(key, name, parents) {
+    const src = W[key + "Image"];
+    if (!src) { $(key).hidden = true; return; }
+    $(key).hidden = false;
+    const img = $(key + "Img");
+    img.src = src; img.alt = W[key + "ImageAlt"] || name;
+    text(key + "Name", name);
+    text(key + "ParentsLine", parents);
+  }
+  person("groom", W.groom, W.groomParents);
+  person("bride", W.bride, W.brideParents);
 
   /* ---------- Events ---------- */
   const flourish = (cls) =>
@@ -124,16 +131,17 @@
     document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
   } else document.querySelectorAll(".reveal").forEach((el) => el.classList.add("in"));
 
-  /* ---------- Parallax on story picture ---------- */
-  const storyImg = $("storyImg");
-  if (storyImg && !reduceMotion) {
-    const onScroll = () => {
-      const rect = storyImg.parentElement.getBoundingClientRect();
-      if (rect.bottom < 0 || rect.top > innerHeight) return;
-      const p = (rect.top + rect.height / 2 - innerHeight / 2) / innerHeight;
-      storyImg.style.transform = `translateY(${p * -12}%)`;
+  /* ---------- Cow procession walks with the scroll ---------- */
+  const track = $("cowsTrack");
+  if (track && !reduceMotion) {
+    let ticking = false;
+    const move = () => {
+      const rect = track.getBoundingClientRect();
+      if (rect.bottom > 0 && rect.top < innerHeight) track.style.backgroundPositionX = `${-scrollY * 0.6}px`;
+      ticking = false;
     };
-    addEventListener("scroll", onScroll, { passive: true }); onScroll();
+    addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(move); } }, { passive: true });
+    move();
   }
 
   /* ---------- Falling petals ---------- */
@@ -178,34 +186,6 @@
     })();
   }
   petals();
-
-  /* ---------- Twinkling stars ---------- */
-  function stars() {
-    const c = $("stars"); if (!c) return;
-    const ctx = c.getContext("2d");
-    let w, h, list = [];
-    const resize = () => {
-      const dpr = Math.min(devicePixelRatio || 1, 2);
-      w = c.clientWidth; h = c.clientHeight;
-      c.width = w * dpr; c.height = h * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      list = Array.from({ length: Math.round(w * h / 2600) }, () => ({
-        x: Math.random() * w, y: Math.random() * h * .7, r: Math.random() * 1.3 + .2,
-        t: Math.random() * Math.PI * 2, v: .01 + Math.random() * .03
-      }));
-    };
-    resize(); addEventListener("resize", resize);
-    const draw = () => {
-      ctx.clearRect(0, 0, w, h);
-      list.forEach((s) => {
-        s.t += s.v;
-        ctx.globalAlpha = reduceMotion ? .8 : .45 + Math.sin(s.t) * .45;
-        ctx.fillStyle = "#fff"; ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2); ctx.fill();
-      });
-      if (!reduceMotion) requestAnimationFrame(draw);
-    };
-    draw();
-  }
-  stars();
 
   /* ---------- Music ---------- */
   if (W.music) {

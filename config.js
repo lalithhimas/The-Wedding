@@ -6,8 +6,8 @@
 
 window.WEDDING = {
   // ---- The couple ----
-  groom: "Vignesh",
-  bride: "Nithya",
+  groom: "Lalith Sagar",
+  bride: "Himabindu",
 
   // Used for the countdown. Format: YYYY-MM-DDTHH:MM:SS+timezone (India = +05:30)
   weddingDate: "2027-03-12T09:00:00+05:30",
@@ -19,20 +19,21 @@ window.WEDDING = {
   groomParents: "Son of Smt. Kamakshi & Shri Srinivasan Iyer",
   brideParents: "Daughter of Smt. Parvathi & Shri K. Ramaswamy",
 
-  // ---- Big pictures (put your files in the images/ folder) ----
-  heroImage: "images/hero.svg",     // first screen
-  storyImage: "images/story.svg",   // full-width picture after the hero
-  storyCaption: "Two families, one celebration",
-  closingImage: "images/closing.svg",
+  // ---- Groom section: picture on the left, name on the right ----
+  groomImage: "images/groom.jpg",
+  groomImageAlt: "Rama lifting Shiva's bow at Sita's swayamvara",
+  // Bride section: picture blended in on the left, name on the right. Leave "" to hide it.
+  brideImage: "images/bride.jpg",
+  brideImageAlt: "Young Sita with Shiva's bow in a flowering garden",
 
   // ---- Events (add, remove or reorder as you like) ----
   events: [
-    { name: "Mehendi",    date: "Wednesday, 10 March 2027", time: "4 pm onwards",  venue: "Kalki Gardens, Chennai",       image: "images/mehendi.svg" },
-    { name: "Haldi",      date: "Thursday, 11 March 2027",  time: "9 am onwards",  venue: "Kalki Gardens, Chennai",       image: "images/haldi.svg" },
-    { name: "Sangeet",    date: "Thursday, 11 March 2027",  time: "7 pm onwards",  venue: "Kalki Gardens, Chennai",       image: "images/sangeet.svg" },
-    { name: "Engagement", date: "Thursday, 11 March 2027",  time: "11 am",         venue: "Sri Mahal, Chennai",           image: "images/engagement.svg" },
-    { name: "Muhurtham",  date: "Friday, 12 March 2027",    time: "9 am – 10.30 am", venue: "Sri Mahal, Chennai",         image: "images/muhurtham.svg" },
-    { name: "Reception",  date: "Friday, 12 March 2027",    time: "7 pm onwards",  venue: "The Leela Palace, Chennai",    image: "images/reception.svg" }
+    { name: "Mehendi", date: "Wednesday, 10 March 2027", time: "4 pm onwards", venue: "Kalki Gardens, Chennai", image: "images/mehendi.svg" },
+    { name: "Haldi", date: "Thursday, 11 March 2027", time: "9 am onwards", venue: "Kalki Gardens, Chennai", image: "images/haldi.svg" },
+    { name: "Sangeet", date: "Thursday, 11 March 2027", time: "7 pm onwards", venue: "Kalki Gardens, Chennai", image: "images/sangeet.svg" },
+    { name: "Engagement", date: "Thursday, 11 March 2027", time: "11 am", venue: "Sri Mahal, Chennai", image: "images/engagement.svg" },
+    { name: "Muhurtham", date: "Friday, 12 March 2027", time: "9 am – 10.30 am", venue: "Sri Mahal, Chennai", image: "images/muhurtham.svg" },
+    { name: "Reception", date: "Friday, 12 March 2027", time: "7 pm onwards", venue: "The Leela Palace, Chennai", image: "images/reception.svg" }
     // Optional per event: mapLink: "https://maps.app.goo.gl/..."
   ],
 
