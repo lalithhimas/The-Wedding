@@ -10,8 +10,8 @@ window.WEDDING = {
   bride: "Himabindu",
 
   // Used for the countdown. Format: YYYY-MM-DDTHH:MM:SS+timezone (India = +05:30)
-  weddingDate: "2027-03-12T09:00:00+05:30",
-  weddingDateText: "Friday, 12 March 2027",
+  weddingDate: "2027-02-21T09:00:00+05:30",
+  weddingDateText: "Friday, 21 March 2027",
 
   // ---- The invitation text ----
   hostLine: "Smt. Rupa Sree Devagudi & Shri Vidya Sagar Devagudi",

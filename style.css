@@ -28,6 +28,7 @@ a { color: inherit; }
 :focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
 
 /* ---------- Hero: gopuram scene ---------- */
+/*
 .hero {
   position: relative;
   height: 100svh;
@@ -60,7 +61,62 @@ a { color: inherit; }
   translate: -50% 0; width: 28px; height: 46px; border: 1.5px solid rgba(255,255,255,.85); border-radius: 14px;
 }
 .scroll-cue span { position: absolute; left: 50%; top: 8px; width: 4px; height: 8px; margin-left: -2px; background: #fff; border-radius: 2px; animation: cue 1.8s ease-in-out infinite; }
+*/
+.hero {
+  position: relative;
+  height: 100svh;
+  min-height: 560px;
+  overflow: hidden;
+  display: grid;
+  place-items: start center;
+  background: var(--night) url("art/hero.svg") center 85% / cover no-repeat;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 70% 28% at center,
+    rgba(8, 12, 43, .82) 0%,
+    rgba(8, 12, 43, .62) 55%,
+    rgba(8, 12, 43, 0) 100%
+  );
+}
+.hero-content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  padding: calc(env(safe-area-inset-top, 0px) + 1vh) 1.5rem 0;
+  animation: rise 1.8s ease-out both .3s;
+}
 
+.hero-title {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(2.4rem, 7vw, 5.2rem);
+  letter-spacing: .02em;
+  line-height: 1.05;
+  color: #f7dc95;
+  text-shadow: 0 2px 16px rgba(5, 8, 30, .7);
+}
+
+.hero-title em {
+  font-family: var(--script);
+  font-style: normal;
+  font-size: .62em;
+  margin: 0 .25em;
+  color: #fff;
+}
+
+.hero-date {
+  margin-top: .6rem;
+  font-size: clamp(1.05rem, 2.4vw, 1.35rem);
+  letter-spacing: .08em;
+  color: #f6ead0;
+  text-shadow: 0 1px 8px rgba(5, 8, 30, .8);
+}
 /* ---------- Continuous garden art ---------- */
 .art {
   background-color: var(--ground);
@@ -116,6 +172,35 @@ a { color: inherit; }
 .small { font-size: 1rem; color: var(--ink-soft); margin-bottom: 1.2rem; }
 
 /* ---------- Painting stories (scroll-driven zoom) ---------- */
+/*.story-intro {
+  min-height: clamp(170px, 24vh, 240px);
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: .45rem;
+  padding: 1.2rem;
+  text-align: center;
+  color: #fff1b8;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(35, 58, 44, .96),
+    #120c07 75%
+  );
+}
+
+.story-intro h2 {
+  font-family: var(--display);
+  font-size: clamp(2.6rem, 6vw, 4.5rem);
+  font-weight: 400;
+  letter-spacing: .08em;
+  text-shadow: 0 0 18px rgba(255, 220, 140, .55);
+}
+
+.story-intro p {
+  font-style: italic;
+}
+  */
+
 .story { position: relative; height: 340vh; background: var(--ground); }
 .story-stage {
   position: sticky; top: 0;
