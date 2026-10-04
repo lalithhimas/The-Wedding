@@ -189,7 +189,15 @@ a { color: inherit; }
   pointer-events: none;
 }
 
-.story { position: relative; height: 340vh; background: var(--ground); }
+
+.story-divider h2 {
+  font-family: var(--display);
+  font-size: clamp(2.6rem, 6vw, 4.5rem);
+  font-weight: 400;
+  letter-spacing: .08em;
+  text-shadow: 0 0 18px rgba(255, 220, 140, .55);
+}
+.story { position: relative; height: 140vh; background: var(--ground); }
 .story-stage {
   position: sticky; top: 0;
   height: 100vh; height: 100svh;
