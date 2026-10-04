@@ -10,8 +10,8 @@ window.WEDDING = {
   bride: "Himabindu",
 
   // Used for the countdown. Format: YYYY-MM-DDTHH:MM:SS+timezone (India = +05:30)
-  weddingDate: "2027-03-12T09:00:00+05:30",
-  weddingDateText: "Friday, 12 March 2027",
+  weddingDate: "2027-02-21T09:00:00+05:30",
+  weddingDateText: "Friday, 21 March 2027",
 
   // ---- The invitation text ----
   hostLine: "Smt. Rupa Sree Devagudi & Shri Vidya Sagar Devagudi",
@@ -26,32 +26,31 @@ window.WEDDING = {
   // Sita's story comes first, then Rama's.
   brideImage: "images/bride.jpg",            // leave "" to hide the bride's story
   brideImageAlt: "Pichwai painting: young Sita with Shiva's golden bow among lotuses, cows and peacocks",
-  brideFocus: { x: 0.5, y: 0.40, size: 0.56 },
-  brideCaption: "As a young girl, Sita moved Shiva's bow while playing, a bow no one else could even shift. Her father vowed she would marry only the one who could string it.",
+ brideFocus: { x: 0.5, y: 0.40, size: 0.85 },
+  
 
   groomImage: "images/groom.jpg",
   groomImageAlt: "Pichwai painting: Rama breaks Shiva's bow as Sita and King Janaka look on",
   groomFocus: { x: 0.52, y: 0.42, size: 0.58 },
-  groomCaption: "At Sita's swayamvara in Mithila, prince after prince failed to lift Shiva's mighty bow. Rama raised it with ease, and as he strung it, the bow broke with a sound like thunder.",
+  
 
   // ---- Events (add, remove or reorder as you like) ----
   events: [
-    { name: "Mehendi", date: "Wednesday, 10 March 2027", time: "4 pm onwards", venue: "Kalki Gardens, Chennai", image: "images/mehendi.svg" },
-    { name: "Haldi", date: "Thursday, 11 March 2027", time: "9 am onwards", venue: "Kalki Gardens, Chennai", image: "images/haldi.svg" },
-    { name: "Sangeet", date: "Thursday, 11 March 2027", time: "7 pm onwards", venue: "Kalki Gardens, Chennai", image: "images/sangeet.svg" },
-    { name: "Engagement", date: "Thursday, 11 March 2027", time: "11 am", venue: "Sri Mahal, Chennai", image: "images/engagement.svg" },
-    { name: "Muhurtham", date: "Friday, 12 March 2027", time: "9 am – 10.30 am", venue: "Sri Mahal, Chennai", image: "images/muhurtham.svg" },
-    { name: "Reception", date: "Friday, 12 March 2027", time: "7 pm onwards", venue: "The Leela Palace, Chennai", image: "images/reception.svg" }
-    // Optional per event: mapLink: "https://maps.app.goo.gl/..."
-  ],
+  { name: "Mehendi", date: "", time: "", venue: "", image: "images/mehendi.svg", comingSoon: true },
+  { name: "Haldi", date: "", time: "", venue: "", image: "images/haldi.svg", comingSoon: true },
+  { name: "Sangeet", date: "", time: "", venue: "", image: "images/sangeet.svg", comingSoon: true },
+  { name: "Engagement", date: "Monday, 16 November 2026", time: "Coming soon", venue: "Nimmanapalli", image: "images/engagement.svg" },
+  { name: "Muhurtham", date: "Sunday, 21 February 2027", time: "3 am – 4 am", venue: "PPR Convention, Madanapalli", image: "images/muhurtham.svg" },
+  { name: "Reception", date: "Saturday, 20 February 2027", time: "5 pm – 9 pm", venue: "PPR Convention, Madanapalli", image: "images/reception.svg" }
+],
 
   // ---- Main venue (map section) ----
   venue: {
-    name: "Sri Mahal",
-    address: "Anna Salai, Chennai, Tamil Nadu",
-    // Paste your Google Maps share link here; if empty, the address above is used
-    mapLink: ""
-  },
+  name: "PPR Convention",
+  address: "Madanpalli, Andhra Pradesh",
+  // Paste your Google Maps share link here; if empty, the address above is used
+  mapLink: ""
+},
 
   // ---- Photo slideshow ----
   gallery: [

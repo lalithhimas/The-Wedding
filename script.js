@@ -39,6 +39,11 @@
         <div class="story-vignette" aria-hidden="true"></div>
         <div class="story-fade story-fade-top" aria-hidden="true"></div>
         <div class="story-fade story-fade-bottom" aria-hidden="true"></div>
+        ${key === "bride"
+  ? '<div class="story-label">The Bride</div>'
+  : key === "groom"
+    ? '<div class="story-label">The Groom</div>'
+    : ""}
         <div class="panel story-card">
           <p class="person-name"></p>
           <p class="lead"></p>
@@ -97,7 +102,9 @@
     const s = s0 * Math.pow(s1 / s0, z);
     // Where the figure should sit on screen: centred at first, then beside the name card
     const sxTarget = vw * (.5 + ((mobile ? .5 : .33) - .5) * z);
-    const syTarget = vh * (.5 + ((mobile ? .36 : .5) - .5) * z);
+     const imageDrop = st.sec.id === "bride" ||st.sec.id === "groom" ? vh * .3 : 0;
+    const syTarget = vh * (.5 + ((mobile ? .36 : .5) - .5) * z) + imageDrop;
+    //const syTarget = vh * (.5 + ((mobile ? .36 : .5) - .5) * z);
     // keep the view inside the painting's inner area (never show its border or edges)
     const clampT = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
     const tx = clampT(sxTarget - fx * st.iw * s, vw - (1 - inset) * st.iw * s, -inset * st.iw * s);
@@ -116,6 +123,7 @@
   }
 
   buildStory("bride", W.bride, W.brideParents);   // Sita first
+
   buildStory("groom", W.groom, W.groomParents);   // then Rama
   let storyTick = false;
   const renderAll = () => { stories.forEach(render); storyTick = false; };
@@ -136,10 +144,17 @@
       <p class="ev-date"></p><p class="ev-time"></p><p class="ev-venue"></p>
       <a target="_blank" rel="noopener">See the route</a>`;
     el.querySelector("h3").textContent = ev.name;
-    el.querySelector(".ev-date").textContent = ev.date;
-    el.querySelector(".ev-time").textContent = ev.time;
-    el.querySelector(".ev-venue").textContent = ev.venue;
-    el.querySelector("a").href = link;
+    if (ev.comingSoon) {
+  el.querySelector(".ev-date").textContent = "Coming soon";
+  el.querySelector(".ev-time").remove();
+  el.querySelector(".ev-venue").remove();
+  el.querySelector("a").remove();
+} else {
+  el.querySelector(".ev-date").textContent = ev.date;
+  el.querySelector(".ev-time").textContent = ev.time;
+  el.querySelector(".ev-venue").textContent = ev.venue;
+  el.querySelector("a").href = link;
+}
     evWrap.appendChild(el);
   });
 
