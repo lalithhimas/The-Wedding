@@ -36,6 +36,9 @@
           <img class="story-blur" alt="" aria-hidden="true">
           <img class="story-focus" alt="" aria-hidden="true">
         </div>
+        <div class="story-vignette" aria-hidden="true"></div>
+        <div class="story-fade story-fade-top" aria-hidden="true"></div>
+        <div class="story-fade story-fade-bottom" aria-hidden="true"></div>
         <div class="panel story-card">
           <p class="person-name"></p>
           <p class="lead"></p>
@@ -58,6 +61,8 @@
       blur: sec.querySelector(".story-blur"),
       sharpFocus: sec.querySelector(".story-focus"),
       card: sec.querySelector(".story-card"),
+      fadeTop: sec.querySelector(".story-fade-top"),
+      fadeBottom: sec.querySelector(".story-fade-bottom"),
       iw: 0, ih: 0
     };
     imgs[0].addEventListener("load", () => {
@@ -85,26 +90,33 @@
 
     // The painting always covers the whole screen; scrolling zooms in on the figure.
     const cover = Math.max(vw / st.iw, vh / st.ih);
-    const s0 = cover;
+    const inset = .055;                    // the paintings have their own painted border; keep it off-screen
+    const s0 = cover / (1 - 2 * inset);
     const fit = (vh * .9) / (size * st.ih);                       // largest zoom where the whole figure still fits
-    const s1 = Math.max(cover * 1.05, Math.min(fit, Math.max(cover * 1.35, (vh * (mobile ? .58 : .82)) / (size * st.ih))));
+    const s1 = Math.max(s0 * 1.05, Math.min(fit, Math.max(s0 * 1.3, (vh * (mobile ? .58 : .82)) / (size * st.ih))));
     const s = s0 * Math.pow(s1 / s0, z);
     // Where the figure should sit on screen: centred at first, then beside the name card
     const sxTarget = vw * (.5 + ((mobile ? .5 : .33) - .5) * z);
     const syTarget = vh * (.5 + ((mobile ? .36 : .5) - .5) * z);
-    const clampT = (v, min) => Math.min(0, Math.max(min, v));   // never show the painting's edges
-    const tx = clampT(sxTarget - fx * st.iw * s, vw - st.iw * s);
-    const ty = clampT(syTarget - fy * st.ih * s, vh - st.ih * s);
+    // keep the view inside the painting's inner area (never show its border or edges)
+    const clampT = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
+    const tx = clampT(sxTarget - fx * st.iw * s, vw - (1 - inset) * st.iw * s, -inset * st.iw * s);
+    const ty = clampT(syTarget - fy * st.ih * s, vh - (1 - inset) * st.ih * s, -inset * st.ih * s);
     st.canvas.style.transform = `translate(${tx}px, ${ty}px) scale(${s})`;
     st.blur.style.opacity = z;
     st.sharpFocus.style.opacity = z;
+    // melt into the green garden ground as the painting arrives and leaves
+    if (!reduceMotion) {
+      st.fadeTop.style.opacity = (1 - clamp01(p / .16)).toFixed(3);
+      st.fadeBottom.style.opacity = clamp01((p - .84) / .16).toFixed(3);
+    }
     st.card.style.opacity = c;
     const lift = (1 - c) * 30;
     st.card.style.transform = mobile ? `translateY(${lift}px)` : `translateY(calc(-50% + ${lift}px))`;
   }
 
-  buildStory("groom", W.groom, W.groomParents);
-  buildStory("bride", W.bride, W.brideParents);
+  buildStory("bride", W.bride, W.brideParents);   // Sita first
+  buildStory("groom", W.groom, W.groomParents);   // then Rama
   let storyTick = false;
   const renderAll = () => { stories.forEach(render); storyTick = false; };
   addEventListener("scroll", () => { if (!storyTick) { storyTick = true; requestAnimationFrame(renderAll); } }, { passive: true });
