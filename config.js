@@ -36,22 +36,21 @@ window.WEDDING = {
 
   // ---- Events (add, remove or reorder as you like) ----
   events: [
-    { name: "Mehendi", date: "Wednesday, 10 March 2027", time: "4 pm onwards", venue: "Kalki Gardens, Chennai", image: "images/mehendi.svg" },
-    { name: "Haldi", date: "Thursday, 11 March 2027", time: "9 am onwards", venue: "Kalki Gardens, Chennai", image: "images/haldi.svg" },
-    { name: "Sangeet", date: "Thursday, 11 March 2027", time: "7 pm onwards", venue: "Kalki Gardens, Chennai", image: "images/sangeet.svg" },
-    { name: "Engagement", date: "Thursday, 11 March 2027", time: "11 am", venue: "Sri Mahal, Chennai", image: "images/engagement.svg" },
-    { name: "Muhurtham", date: "Friday, 12 March 2027", time: "9 am – 10.30 am", venue: "Sri Mahal, Chennai", image: "images/muhurtham.svg" },
-    { name: "Reception", date: "Friday, 12 March 2027", time: "7 pm onwards", venue: "The Leela Palace, Chennai", image: "images/reception.svg" }
-    // Optional per event: mapLink: "https://maps.app.goo.gl/..."
-  ],
+  { name: "Mehendi", date: "", time: "", venue: "", image: "images/mehendi.svg", comingSoon: true },
+  { name: "Haldi", date: "", time: "", venue: "", image: "images/haldi.svg", comingSoon: true },
+  { name: "Sangeet", date: "", time: "", venue: "", image: "images/sangeet.svg", comingSoon: true },
+  { name: "Engagement", date: "Monday, 16 November 2026", time: "Coming soon", venue: "Nimmanapalli", image: "images/engagement.svg" },
+  { name: "Muhurtham", date: "Sunday, 21 February 2027", time: "3 am – 4 am", venue: "PPR Convention, Madanapalli", image: "images/muhurtham.svg" },
+  { name: "Reception", date: "Saturday, 20 February 2027", time: "5 pm – 9 pm", venue: "PPR Convention, Madanapalli", image: "images/reception.svg" }
+],
 
   // ---- Main venue (map section) ----
   venue: {
-    name: "Sri Mahal",
-    address: "Anna Salai, Chennai, Tamil Nadu",
-    // Paste your Google Maps share link here; if empty, the address above is used
-    mapLink: ""
-  },
+  name: "PPR Convention",
+  address: "Madanpalli, Andhra Pradesh",
+  // Paste your Google Maps share link here; if empty, the address above is used
+  mapLink: ""
+},
 
   // ---- Photo slideshow ----
   gallery: [

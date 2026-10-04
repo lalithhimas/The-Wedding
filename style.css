@@ -361,7 +361,7 @@ a { color: inherit; }
   min-height: max(100svh, 87.5vw);
   display: grid; place-items: start center;
   color: var(--paper);
-  background: var(--night) url("art/closing.svg") center top / cover no-repeat;
+ background: var(--night) url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSODaroIHK0ECwfBErT6byPG1OFsG1WspKQ0X1rZemrtw&s=10") center / cover no-repeat;
   padding-top: max(19svh, 18.5vw);
   padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 3rem);
 }

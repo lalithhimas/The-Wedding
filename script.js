@@ -144,10 +144,17 @@
       <p class="ev-date"></p><p class="ev-time"></p><p class="ev-venue"></p>
       <a target="_blank" rel="noopener">See the route</a>`;
     el.querySelector("h3").textContent = ev.name;
-    el.querySelector(".ev-date").textContent = ev.date;
-    el.querySelector(".ev-time").textContent = ev.time;
-    el.querySelector(".ev-venue").textContent = ev.venue;
-    el.querySelector("a").href = link;
+    if (ev.comingSoon) {
+  el.querySelector(".ev-date").textContent = "Coming soon";
+  el.querySelector(".ev-time").remove();
+  el.querySelector(".ev-venue").remove();
+  el.querySelector("a").remove();
+} else {
+  el.querySelector(".ev-date").textContent = ev.date;
+  el.querySelector(".ev-time").textContent = ev.time;
+  el.querySelector(".ev-venue").textContent = ev.venue;
+  el.querySelector("a").href = link;
+}
     evWrap.appendChild(el);
   });
 
