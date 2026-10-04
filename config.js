@@ -26,13 +26,13 @@ window.WEDDING = {
   // Sita's story comes first, then Rama's.
   brideImage: "images/bride.jpg",            // leave "" to hide the bride's story
   brideImageAlt: "Pichwai painting: young Sita with Shiva's golden bow among lotuses, cows and peacocks",
-  brideFocus: { x: 0.5, y: 0.40, size: 0.56 },
-  brideCaption: "As a young girl, Sita moved Shiva's bow while playing, a bow no one else could even shift. Her father vowed she would marry only the one who could string it.",
+ brideFocus: { x: 0.5, y: 0.40, size: 0.85 },
+  
 
   groomImage: "images/groom.jpg",
   groomImageAlt: "Pichwai painting: Rama breaks Shiva's bow as Sita and King Janaka look on",
   groomFocus: { x: 0.52, y: 0.42, size: 0.58 },
-  groomCaption: "At Sita's swayamvara in Mithila, prince after prince failed to lift Shiva's mighty bow. Rama raised it with ease, and as he strung it, the bow broke with a sound like thunder.",
+  
 
   // ---- Events (add, remove or reorder as you like) ----
   events: [
